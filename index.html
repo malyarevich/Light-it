@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>REST API</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="main-container">
+
+  <!-- site header -->
+  <header>
+    REST API
+    <button id="show-popup-chart">Gender Chart</button>
+    <div class="search-container">
+      <input id="search" type="text" placeholder="First name or part of...">
+      <img src="img/search-icon.png" alt="search">
+    </div>
+  </header>
+
+  <!-- container for users -->
+  <div class="users">
+    <div class="title">
+      <div class="last">Last</div>
+      <div class="first">First</div>
+      <div class="username">Username</div>
+      <div class="phone">Phone</div>
+      <div class="location">Location</div>
+    </div>
+
+    <div class="content"></div>
+  </div>
+
+  <!-- chart pop-up -->
+  <div class="chart-container">
+    <img class="close-icon" src="img/close-icon.png" alt="">
+    <h1>Gender users</h1>
+    <div class="chart"><canvas id="chart"></canvas></div>
+  </div>
+</body>
+</html>
