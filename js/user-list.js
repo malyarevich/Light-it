@@ -1,12 +1,37 @@
+
+var users;
+var neededUsersArray;
+
 jQuery(document).ready(function() {
+
+
     jQuery.ajax({
         url: "https://randomuser.me/api?results=20",
         dataType: "json",
-        success: getUserInformation
+        success: getUserInformation,
     });
-});
 
-var users;
+    //recount gender for research (bad way - crutch!)
+    jQuery("#show-popup-chart").click(function recountGenderResearch(){
+        let maleCount = 0;
+        if( neededUsersArray !== undefined && users !== undefined ) {
+            users.forEach(function(user){
+                neededUsersArray.forEach(function(uNames) {
+                    if (uNames.innerHTML.toLowerCase() === user.name.first.toLowerCase()){
+                        if (user.gender === "male") {
+                            maleCount++;
+                        }
+                    }
+                });
+            });
+            console.log(maleCount);
+            femaleCount = neededUsersArray.length - maleCount;
+
+            createChart(maleCount, femaleCount);
+        }
+    });
+
+});
 
 // create short info
 function createUserShort(user) {
@@ -116,25 +141,8 @@ function MSOtoArray (obj) {
 	for (i = 0; i < length; i += 1) {
 		res.push(obj[i]);
 	}
+    neededUsersArray = res;
 	return res;
-}
-
-//recount gender for research (bad way - crutch!)
-function recountGenderResearch(userNames) {
-    userNames = MSOtoArray(userNames);
-    let maleCount = 0;
-    users.forEach(function(user){
-        userNames.forEach(function(uNames) {
-            if (uNames.innerHTML.toLowerCase() === user.name.first.toLowerCase()){
-                maleCount++;
-            }
-        });
-    });
-    console.log(maleCount);
-    femaleCount = userNames.length - maleCount;
-
-    createAccordion();
-    createChart(maleCount, femaleCount);
 }
 
 // add to to page

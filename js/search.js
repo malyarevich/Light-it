@@ -26,5 +26,5 @@ function searchUsers() {
       return index % 2 === 0;
     }).parents(".user").addClass("bg-gray");
 
-    recountGenderResearch(neededUsers);
+    MSOtoArray(neededUsers);
 };

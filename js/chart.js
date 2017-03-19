@@ -45,7 +45,7 @@ function createChart(male, female) {
 
   // get chart canvas
   let chart = $("#chart");
-
+  chart.empty();
   // create chart
   let genderChart = new Chart(chart, {
     type: "pie",
